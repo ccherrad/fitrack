@@ -17,13 +17,12 @@ import {
 } from '@tanstack/vue-table'
 
 import { ref } from 'vue'
-import { type Athlete } from '@/data/schema'
 import DataTableToolbar from './DataTableToolbar.vue'
 import { valueUpdater } from '@/lib/utils'
 
 interface DataTableProps {
-  columns: ColumnDef<Athlete, any>[]
-  data: Athlete[]
+  columns: ColumnDef<T, any>[]
+  data: T[]
 }
 const props = defineProps<DataTableProps>()
 

@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import type { Table } from '@tanstack/vue-table'
 import { computed } from 'vue'
-import { type Task } from '@/data/schema'
 import { PlusIcon } from '@radix-icons/vue'
 
 interface DataTableCreateRowProps {
-  table: Table<Task>
+  table: Table<T>
 }
 
 const props = defineProps<DataTableCreateRowProps>()

@@ -2,7 +2,6 @@
 import type { Column } from '@tanstack/vue-table'
 import type { Component } from 'vue'
 import { computed } from 'vue'
-import type { Task } from '@/data/schema'
 import {
     PlusCircledIcon,
     CheckIcon
@@ -11,7 +10,7 @@ import {
 import { cn } from '@/lib/utils'
 
 interface DataTableFacetedFilter {
-  column?: Column<Task, any>
+  column?: Column<T, any>
   title?: string
   options: {
     label: string

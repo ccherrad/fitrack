@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { type Table } from '@tanstack/vue-table'
-import { type Task } from '@/data/schema'
 import {
     ChevronLeftIcon,
     ChevronRightIcon,
@@ -10,7 +9,7 @@ import {
 
 
 interface DataTablePaginationProps {
-  table: Table<Task>
+  table: Table<T>
 }
 defineProps<DataTablePaginationProps>()
 </script>
