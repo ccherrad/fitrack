@@ -1,0 +1,184 @@
+# Root Level
+# Ignore environment and build files
+.env
+*.log
+.DS_Store
+
+# Python (FastAPI) specific ignores under src/python
+src/python/__pycache__/
+src/python/*.py[cod]
+src/python/*$py.class
+
+# C extensions
+src/python/*.so
+
+# Distribution / packaging
+src/python/.Python
+src/python/env/
+src/python/venv/
+src/python/ENV/
+src/python/build/
+src/python/develop-eggs/
+src/python/dist/
+src/python/downloads/
+src/python/eggs/
+src/python/.eggs/
+src/python/lib/
+src/python/lib64/
+src/python/parts/
+src/python/sdist/
+src/python/var/
+src/python/wheels/
+src/python/share/python-wheels/
+src/python/*.egg-info/
+src/python/.installed.cfg
+src/python/*.egg
+src/python/MANIFEST
+
+# PyInstaller
+src/python/*.manifest
+src/python/*.spec
+
+# Installer logs
+src/python/pip-log.txt
+src/python/pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+src/python/htmlcov/
+src/python/.tox/
+src/python/.nox/
+src/python/.coverage
+src/python/.coverage.*
+src/python/.cache
+src/python/nosetests.xml
+src/python/coverage.xml
+src/python/*.cover
+src/python/.hypothesis/
+src/python/.pytest_cache/
+src/python/pytestdebug.log
+
+# Translations
+src/python/*.mo
+src/python/*.pot
+
+# Django stuff:
+src/python/*.log
+src/python/local_settings.py
+src/python/db.sqlite3
+src/python/db.sqlite3-journal
+
+# Flask stuff:
+src/python/instance/
+src/python/.webassets-cache
+
+# Scrapy stuff:
+src/python/.scrapy
+
+# Sphinx documentation
+src/python/docs/_build/
+src/python/docs/_build/doctrees
+src/python/docs/_build/html
+src/python/docs/_build/latex
+src/python/docs/_build/epub
+src/python/docs/_build/json
+src/python/docs/_build/coverage
+
+# PyBuilder
+src/python/target/
+
+# Jupyter Notebook
+src/python/.ipynb_checkpoints
+
+# IPython
+src/python/profile_default/
+src/python/ipython_config.py
+
+# pyenv
+src/python/.python-version
+
+# Celery
+src/python/celerybeat-schedule
+src/python/celerybeat.pid
+
+# SageMath parsed files
+src/python/*.sage.py
+
+# Environments
+src/python/.env
+src/python/.venv
+src/python/env/
+src/python/venv/
+src/python/ENV/
+src/python/env.bak/
+src/python/venv.bak/
+
+# Spyder project settings
+src/python/.spyderproject
+src/python/.spyderworkspace
+
+# Rope project settings
+src/python/.ropeproject
+
+# mkdocs documentation
+src/python/site
+
+# mypy
+src/python/.mypy_cache/
+src/python/.dmypy.json
+src/python/dmypy.json
+
+# Pyre type checker
+src/python/.pyre/
+
+# Nuxt.js specific ignores under src/js
+
+# Logs
+src/js/logs
+src/js/*.log
+src/js/npm-debug.log*
+src/js/yarn-debug.log*
+src/js/yarn-error.log*
+
+# Dependency directories
+src/js/node_modules/
+
+# Production build files
+src/js/dist/
+src/js/.nuxt/
+src/js/.next/
+
+# Static build directory
+src/js/out/
+
+# Build artifacts
+src/js/build/
+src/js/.babel_cache.json
+src/js/.cache/
+
+# Testing
+src/js/coverage/
+src/js/*.lcov
+
+# Nuxt generate
+src/js/dist/
+
+# Misc
+src/js/.DS_Store
+src/js/*.swp
+src/js/*~
+
+# Env files
+src/js/.env
+src/js/.env.*.local
+
+# Editor directories and files
+src/js/.idea
+src/js/.vscode
+src/js/*.suo
+src/js/*.ntvs*
+src/js/*.njsproj
+src/js/*.sln
+
+# Typescript
+src/js/*.tsbuildinfo
+
