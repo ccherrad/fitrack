@@ -20,7 +20,7 @@ export const columns: ColumnDef<Athlete>[] = [
   },
   {
     accessorKey: 'id',
-    header: ({ column }) => h(DataTableColumnHeader, { column, title: 'Identification Number' }),
+    header: ({ column }) => h(DataTableColumnHeader, { column, title: '#' }),
     cell: ({ row }) => h('div', { class: 'w-20' }, row.getValue('id')),
     enableSorting: false,
     enableHiding: false,
