@@ -8,6 +8,7 @@
 src/python/__pycache__/
 src/python/*.py[cod]
 src/python/*$py.class
+__pycache__
 
 # C extensions
 src/python/*.so
