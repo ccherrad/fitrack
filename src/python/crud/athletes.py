@@ -20,17 +20,17 @@ def get_athletes(session):
 def get_athlete_by_id(session, athlete_id):
     return session.query(Athlete).filter_by(id=athlete_id).first()
 
-def update_athlete(session, athlete_id, **kwargs):
+def update_athlete_by_id(session, athlete_id, **kwargs):
     athlete = session.query(Athlete).filter_by(id=athlete_id).first()
     if athlete:
         for key, value in kwargs.items():
             if hasattr(athlete, key):
                 setattr(athlete, key, value)
         session.commit()
-        return True
+        return athlete
     return False
 
-def delete_athlete(session, athlete_id):
+def delete_athlete_by_id(session, athlete_id):
     athlete = session.query(Athlete).filter_by(id=athlete_id).first()
     if athlete:
         session.delete(athlete)

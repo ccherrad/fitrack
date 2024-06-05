@@ -2,11 +2,20 @@
 import type { Row } from '@tanstack/vue-table'
 import { computed } from 'vue'
 import { DotsHorizontalIcon } from '@radix-icons/vue'
+import AthleteService from '@/services/athlete'
 
 interface DataTableRowActionsProps {
   row: Row<T>
 }
 const props = defineProps<DataTableRowActionsProps>()
+
+const emit = defineEmits(['athleteDeleted']);
+
+async function handleDelete() {
+  const athleteId = props.row.getValue('id')
+  await AthleteService.delete(athleteId);
+  emit("athleteDeleted");
+}
 
 </script>
 
@@ -23,7 +32,7 @@ const props = defineProps<DataTableRowActionsProps>()
     </DropdownMenuTrigger>
     <DropdownMenuContent align="end" class="w-[160px]">
       <DropdownMenuItem>Edit</DropdownMenuItem>
-      <DropdownMenuItem>
+      <DropdownMenuItem @click="handleDelete">
         Delete
         <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
       </DropdownMenuItem>

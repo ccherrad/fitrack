@@ -1,23 +1,24 @@
 <script setup lang="ts">
 import type { Table } from '@tanstack/vue-table'
-import { computed } from 'vue'
+import { computed, ref} from 'vue'
 import { PlusIcon } from '@radix-icons/vue'
 
 interface DataTableCreateRowProps {
-  table: Table<T>
+  create: Object
 }
 
 const props = defineProps<DataTableCreateRowProps>()
+const open = ref(false)
+const emit = defineEmits(['submitted']);
 
-const columns = computed(() => props.table.getAllColumns()
-  .filter(
-    column =>
-      typeof column.accessorFn !== 'undefined' && column.getCanHide(),
-  ))
+const handleSubmitted = () => {
+  open.value = false;
+  emit('submitted');
+};
 </script>
 
 <template>
-  <Dialog>
+  <Dialog v-model:open="open">
     <DialogTrigger as-child>
       <Button
         variant="outline"
@@ -32,21 +33,7 @@ const columns = computed(() => props.table.getAllColumns()
       <DialogHeader>
         <DialogTitle>Add athlete</DialogTitle>
       </DialogHeader>
-      <form class="w-2/3 space-y-6" @submit="onSubmit">
-        <FormField v-slot="{ componentField }" name="fullname">
-          <FormItem>
-            <FormLabel>Fullname</FormLabel>
-            <FormControl>
-              <Input type="text" placeholder="John Doe" v-bind="componentField" />
-            </FormControl>
-          </FormItem>
-        </FormField>
-        <DialogFooter>
-          <Button type="submit">
-            Save changes
-          </Button>
-        </DialogFooter>
-      </form>
+      <component :is="create" @submitted="handleSubmitted"/>
     </DialogContent>
   </Dialog>
 </template>

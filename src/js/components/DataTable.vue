@@ -23,8 +23,16 @@ import { valueUpdater } from '@/lib/utils'
 interface DataTableProps {
   columns: ColumnDef<T, any>[]
   data: T[]
+  create: Object
+  service: Object
 }
 const props = defineProps<DataTableProps>()
+
+const emit = defineEmits(['newAdded', "athleteDeleted"]);
+
+const handleCellClick = () => {                                                                                                                                                              
+  console.log("cell clicked");
+};  
 
 const sorting = ref<SortingState>([])
 const columnFilters = ref<ColumnFiltersState>([])
@@ -56,7 +64,7 @@ const table = useVueTable({
 
 <template>
   <div class="space-y-4">
-    <DataTableToolbar :table="table" />
+    <DataTableToolbar :table="table" :create="create" @submitted="emit('newAdded')"/>
     <div class="rounded-md border">
       <Table>
         <TableHeader>
@@ -74,7 +82,7 @@ const table = useVueTable({
               :data-state="row.getIsSelected() && 'selected'"
             >
               <TableCell v-for="cell in row.getVisibleCells()" :key="cell.id">
-                <FlexRender :render="cell.column.columnDef.cell" :props="cell.getContext()" />
+                <FlexRender :render="cell.column.columnDef.cell" :props="cell.getContext()" @athleteDeleted="emit('athleteDeleted')"/>
               </TableCell>
             </TableRow>
           </template>

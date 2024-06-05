@@ -8,6 +8,12 @@ class AthleteIn(BaseModel):
     bio: Optional[str] = None
     group_id: Optional[int] = None
 
+class AthleteUpdate(BaseModel):
+    fullname: Optional[str] = None
+    dob: Optional[date] = None
+    bio: Optional[str] = None
+    group_id: Optional[int] = None
+
 class AthleteOut(BaseModel):
     id: int
     fullname: str

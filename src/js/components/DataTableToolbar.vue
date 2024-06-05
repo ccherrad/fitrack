@@ -9,9 +9,12 @@ import { Cross2Icon } from '@radix-icons/vue'
 
 interface DataTableToolbarProps {
   table: Table<T>
+  create: Object
 }
 
 const props = defineProps<DataTableToolbarProps>()
+
+const emit = defineEmits(['submitted']);
 
 const isFiltered = computed(() => props.table.getState().columnFilters.length > 0)
 </script>
@@ -50,7 +53,7 @@ const isFiltered = computed(() => props.table.getState().columnFilters.length > 
     </div>
     <div class="flex flex-1 items-center space-x-2">
       <DataTableViewOptions :table="table" />
-      <DataTableCreateRow :table="table" />
+      <DataTableCreateRow :create="create" @submitted="emit('submitted')"/>
     </div>
   </div>
 </template>

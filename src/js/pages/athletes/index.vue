@@ -2,6 +2,7 @@
 import { ref, onMounted } from 'vue'
 import { columns } from '@/components/columns'
 import athleteService from '~/services/athlete';
+import Create from './[id].vue';
 
 const athletes = ref([])
 
@@ -19,6 +20,13 @@ onMounted(fetchAthletes)
 
 <template>
   <div class="hidden flex-1 flex-col space-y-8 p-8 md:flex">
-    <DataTable :data="athletes" :columns="columns" />
+    <DataTable
+      :data="athletes"
+      :columns="columns"
+      :create="Create"
+      :service="athleteService"
+      @newAdded="fetchAthletes"
+      @athleteDeleted="fetchAthletes"
+    />
   </div>
 </template>

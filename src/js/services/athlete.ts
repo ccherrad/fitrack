@@ -88,6 +88,11 @@ export default {
       if (!response.ok) {
         throw new Error(`Error deleting athlete with ID ${id}: ${response.statusText}`);
       }
+
+      if (response.status === 204) {
+        return {};
+      }
+
       return await response.json();
     } catch (error) {
       console.error(error);
