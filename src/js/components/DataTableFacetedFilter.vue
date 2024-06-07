@@ -1,28 +1,28 @@
 <script setup lang="ts">
-import type { Column } from '@tanstack/vue-table'
-import type { Component } from 'vue'
-import { computed } from 'vue'
+import type { Column } from "@tanstack/vue-table";
+import type { Component } from "vue";
+import { computed } from "vue";
 import {
     PlusCircledIcon,
-    CheckIcon
-} from '@radix-icons/vue'
+    CheckIcon,
+} from "@radix-icons/vue";
 
-import { cn } from '@/lib/utils'
+import { cn } from "@/lib/utils";
 
 interface DataTableFacetedFilter {
-  column?: Column<T, any>
-  title?: string
+  column?: Column<T, any>;
+  title?: string;
   options: {
-    label: string
-    value: string
-    icon?: Component
-  }[]
+    label: string;
+    value: string;
+    icon?: Component;
+  }[];
 }
 
-const props = defineProps<DataTableFacetedFilter>()
+const props = defineProps<DataTableFacetedFilter>();
 
-const facets = computed(() => props.column?.getFacetedUniqueValues())
-const selectedValues = computed(() => new Set(props.column?.getFilterValue() as string[]))
+const facets = computed(() => props.column?.getFacetedUniqueValues());
+const selectedValues = computed(() => new Set(props.column?.getFilterValue() as string[]));
 </script>
 
 <template>

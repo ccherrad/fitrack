@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import { columns } from '@/components/columns'
-import athleteService from '~/services/athlete';
-import Create from './[id].vue';
+import { ref, onMounted } from "vue";
+import { columns } from "@/components/columns";
+import athleteService from "~/services/athlete";
+import Create from "./[id].vue";
 
-const athletes = ref([])
+const athletes = ref([]);
 
 const fetchAthletes = async () => {
   try {
@@ -14,7 +14,7 @@ const fetchAthletes = async () => {
   }
 };
 
-onMounted(fetchAthletes)
+onMounted(fetchAthletes);
 
 </script>
 
@@ -25,8 +25,8 @@ onMounted(fetchAthletes)
       :columns="columns"
       :create="Create"
       :service="athleteService"
-      @newAdded="fetchAthletes"
-      @athleteDeleted="fetchAthletes"
+      @new-added="fetchAthletes"
+      @athlete-deleted="fetchAthletes"
     />
   </div>
 </template>

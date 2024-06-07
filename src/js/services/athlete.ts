@@ -1,12 +1,12 @@
-const API_URL = 'http://127.0.0.1:8000/api/v1/athletes/';
+const API_URL = "http://127.0.0.1:8000/api/v1/athletes/";
 
 export default {
   async getAll() {
     try {
       const response = await fetch(API_URL, {
-        method: 'GET',
+        method: "GET",
         headers: {
-          'Accept': 'application/json',
+          "Accept": "application/json",
         },
       });
       if (!response.ok) {
@@ -22,9 +22,9 @@ export default {
   async get(id: number) {
     try {
       const response = await fetch(`${API_URL}${id}/`, {
-        method: 'GET',
+        method: "GET",
         headers: {
-          'Accept': 'application/json',
+          "Accept": "application/json",
         },
       });
       if (!response.ok) {
@@ -40,10 +40,10 @@ export default {
   async create(data: any) {
     try {
       const response = await fetch(API_URL, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
+          "Accept": "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
       });
@@ -60,10 +60,10 @@ export default {
   async update(id: number, data: any) {
     try {
       const response = await fetch(`${API_URL}${id}/`, {
-        method: 'PUT',
+        method: "PUT",
         headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
+          "Accept": "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
       });
@@ -80,9 +80,9 @@ export default {
   async delete(id: number) {
     try {
       const response = await fetch(`${API_URL}${id}/`, {
-        method: 'DELETE',
+        method: "DELETE",
         headers: {
-          'Accept': 'application/json',
+          "Accept": "application/json",
         },
       });
       if (!response.ok) {

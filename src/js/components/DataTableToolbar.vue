@@ -1,22 +1,22 @@
 <script setup lang="ts">
-import { type Table } from '@tanstack/vue-table'
-import { computed } from 'vue'
+import { type Table } from "@tanstack/vue-table";
+import { computed } from "vue";
 
-import { priorities, statuses } from '@/data/data'
-import DataTableFacetedFilter from './DataTableFacetedFilter.vue'
-import DataTableViewOptions from './DataTableViewOptions.vue'
-import { Cross2Icon } from '@radix-icons/vue'
+import { priorities, statuses } from "@/data/data";
+import DataTableFacetedFilter from "./DataTableFacetedFilter.vue";
+import DataTableViewOptions from "./DataTableViewOptions.vue";
+import { Cross2Icon } from "@radix-icons/vue";
 
 interface DataTableToolbarProps {
-  table: Table<T>
-  create: Object
+  table: Table<T>;
+  create: Object;
 }
 
-const props = defineProps<DataTableToolbarProps>()
+const props = defineProps<DataTableToolbarProps>();
 
-const emit = defineEmits(['submitted']);
+const emit = defineEmits(["submitted"]);
 
-const isFiltered = computed(() => props.table.getState().columnFilters.length > 0)
+const isFiltered = computed(() => props.table.getState().columnFilters.length > 0);
 </script>
 
 <template>

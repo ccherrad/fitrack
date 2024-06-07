@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { cn } from '@/lib/utils'
+import { cn } from "@/lib/utils";
 import {
     MixIcon,
-} from '@radix-icons/vue'
+} from "@radix-icons/vue";
 </script>
 
 <template>

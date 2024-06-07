@@ -1,18 +1,19 @@
-<script setup lang="ts">
-import type { Row } from '@tanstack/vue-table'
-import { computed } from 'vue'
-import { DotsHorizontalIcon } from '@radix-icons/vue'
-import AthleteService from '@/services/athlete'
+<script setup lang="ts" generic="T extends {id: number}">
+import type { Row } from "@tanstack/vue-table";
+import { DotsHorizontalIcon } from "@radix-icons/vue";
+import AthleteService from "@/services/athlete";
 
-interface DataTableRowActionsProps {
-  row: Row<T>
+interface DataTableRowActionsProps<T> {
+  row: Row<T>;
 }
-const props = defineProps<DataTableRowActionsProps>()
 
-const emit = defineEmits(['athleteDeleted']);
+
+const props = defineProps<DataTableRowActionsProps<T>>();
+
+const emit = defineEmits(["athleteDeleted"]);
 
 async function handleDelete() {
-  const athleteId = props.row.getValue('id')
+  const athleteId = props.row.getValue<number>("id");
   await AthleteService.delete(athleteId);
   emit("athleteDeleted");
 }

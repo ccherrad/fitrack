@@ -1,33 +1,33 @@
-import type { Component, InputHTMLAttributes } from 'vue'
-import type { ZodAny, z } from 'zod'
-import type { INPUT_COMPONENTS } from './constant'
+import type { Component, InputHTMLAttributes } from "vue";
+import type { ZodAny, z } from "zod";
+import type { INPUT_COMPONENTS } from "./constant";
 
 export interface FieldProps {
-  fieldName: string
-  label?: string
-  required?: boolean
-  config?: ConfigItem
-  disabled?: boolean
+  fieldName: string;
+  label?: string;
+  required?: boolean;
+  config?: ConfigItem;
+  disabled?: boolean;
 }
 
 export interface Shape {
-  type: string
-  default?: any
-  required?: boolean
-  options?: string[]
-  schema?: ZodAny
+  type: string;
+  default?: any;
+  required?: boolean;
+  options?: string[];
+  schema?: ZodAny;
 }
 
 export interface ConfigItem {
   /** Value for the `FormLabel` */
-  label?: string
+  label?: string;
   /** Value for the `FormDescription` */
-  description?: string
+  description?: string;
   /** Pick which component to be rendered. */
-  component?: keyof typeof INPUT_COMPONENTS | Component
+  component?: keyof typeof INPUT_COMPONENTS | Component;
   /** Hide `FormLabel`. */
-  hideLabel?: boolean
-  inputProps?: InputHTMLAttributes
+  hideLabel?: boolean;
+  inputProps?: InputHTMLAttributes;
 }
 
 // Define a type to unwrap an array
@@ -51,10 +51,10 @@ export enum DependencyType {
 }
 
 interface BaseDependency<SchemaType extends z.infer<z.ZodObject<any, any>>> {
-  sourceField: keyof SchemaType
-  type: DependencyType
-  targetField: keyof SchemaType
-  when: (sourceFieldValue: any, targetFieldValue: any) => boolean
+  sourceField: keyof SchemaType;
+  type: DependencyType;
+  targetField: keyof SchemaType;
+  when: (sourceFieldValue: any, targetFieldValue: any) => boolean;
 }
 
 export type ValueDependency<SchemaType extends z.infer<z.ZodObject<any, any>>> =
@@ -62,7 +62,7 @@ export type ValueDependency<SchemaType extends z.infer<z.ZodObject<any, any>>> =
     type:
       | DependencyType.DISABLES
       | DependencyType.REQUIRES
-      | DependencyType.HIDES
+      | DependencyType.HIDES;
   }
 
 export type EnumValues = readonly [string, ...string[]]
@@ -70,10 +70,10 @@ export type EnumValues = readonly [string, ...string[]]
 export type OptionsDependency<
   SchemaType extends z.infer<z.ZodObject<any, any>>,
 > = BaseDependency<SchemaType> & {
-  type: DependencyType.SETS_OPTIONS
+  type: DependencyType.SETS_OPTIONS;
 
   // Partial array of values from sourceField that will trigger the dependency
-  options: EnumValues
+  options: EnumValues;
 }
 
 export type Dependency<SchemaType extends z.infer<z.ZodObject<any, any>>> =

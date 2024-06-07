@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { cn } from '@/lib/utils'
+import { cn } from "@/lib/utils";
 import {
     PersonIcon,
     MagicWandIcon,
     DesktopIcon,
     TokensIcon,
-} from '@radix-icons/vue'
+} from "@radix-icons/vue";
 </script>
 
 

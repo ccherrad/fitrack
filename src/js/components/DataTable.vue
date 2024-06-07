@@ -4,7 +4,7 @@ import type {
   ColumnFiltersState,
   SortingState,
   VisibilityState,
-} from '@tanstack/vue-table'
+} from "@tanstack/vue-table";
 import {
   FlexRender,
   getCoreRowModel,
@@ -14,39 +14,39 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   useVueTable,
-} from '@tanstack/vue-table'
+} from "@tanstack/vue-table";
 
-import { ref } from 'vue'
-import DataTableToolbar from './DataTableToolbar.vue'
-import { valueUpdater } from '@/lib/utils'
+import { ref } from "vue";
+import DataTableToolbar from "./DataTableToolbar.vue";
+import { valueUpdater } from "@/lib/utils";
 
 interface DataTableProps {
-  columns: ColumnDef<T, any>[]
-  data: T[]
-  create: Object
-  service: Object
+  columns: ColumnDef<T, any>[];
+  data: T[];
+  create: Object;
+  service: Object;
 }
-const props = defineProps<DataTableProps>()
+const props = defineProps<DataTableProps>();
 
-const emit = defineEmits(['newAdded', "athleteDeleted"]);
+const emit = defineEmits(["newAdded", "athleteDeleted"]);
 
-const handleCellClick = () => {                                                                                                                                                              
+const handleCellClick = () => {
   console.log("cell clicked");
-};  
+};
 
-const sorting = ref<SortingState>([])
-const columnFilters = ref<ColumnFiltersState>([])
-const columnVisibility = ref<VisibilityState>({})
-const rowSelection = ref({})
+const sorting = ref<SortingState>([]);
+const columnFilters = ref<ColumnFiltersState>([]);
+const columnVisibility = ref<VisibilityState>({});
+const rowSelection = ref({});
 
 const table = useVueTable({
-  get data() { return props.data },
-  get columns() { return props.columns },
+  get data() { return props.data; },
+  get columns() { return props.columns; },
   state: {
-    get sorting() { return sorting.value },
-    get columnFilters() { return columnFilters.value },
-    get columnVisibility() { return columnVisibility.value },
-    get rowSelection() { return rowSelection.value },
+    get sorting() { return sorting.value; },
+    get columnFilters() { return columnFilters.value; },
+    get columnVisibility() { return columnVisibility.value; },
+    get rowSelection() { return rowSelection.value; },
   },
   enableRowSelection: true,
   onSortingChange: updaterOrValue => valueUpdater(updaterOrValue, sorting),
@@ -59,7 +59,7 @@ const table = useVueTable({
   getSortedRowModel: getSortedRowModel(),
   getFacetedRowModel: getFacetedRowModel(),
   getFacetedUniqueValues: getFacetedUniqueValues(),
-})
+});
 </script>
 
 <template>
@@ -82,7 +82,7 @@ const table = useVueTable({
               :data-state="row.getIsSelected() && 'selected'"
             >
               <TableCell v-for="cell in row.getVisibleCells()" :key="cell.id">
-                <FlexRender :render="cell.column.columnDef.cell" :props="cell.getContext()" @athleteDeleted="emit('athleteDeleted')"/>
+                <FlexRender :render="cell.column.columnDef.cell" :props="cell.getContext()" @athlete-deleted="emit('athleteDeleted')"/>
               </TableCell>
             </TableRow>
           </template>

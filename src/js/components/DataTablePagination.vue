@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import { type Table } from '@tanstack/vue-table'
+import { type Table } from "@tanstack/vue-table";
 import {
     ChevronLeftIcon,
     ChevronRightIcon,
     DoubleArrowLeftIcon,
     DoubleArrowRightIcon,
-} from '@radix-icons/vue'
+} from "@radix-icons/vue";
 
 
 interface DataTablePaginationProps {
-  table: Table<T>
+  table: Table<T>;
 }
-defineProps<DataTablePaginationProps>()
+defineProps<DataTablePaginationProps>();
 </script>
 
 <template>

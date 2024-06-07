@@ -1,19 +1,19 @@
 <script setup lang="ts">
-import type { Table } from '@tanstack/vue-table'
-import { computed } from 'vue'
-import { MixerHorizontalIcon } from '@radix-icons/vue'
+import type { Table } from "@tanstack/vue-table";
+import { computed } from "vue";
+import { MixerHorizontalIcon } from "@radix-icons/vue";
 
 interface DataTableViewOptionsProps {
-  table: Table<T>
+  table: Table<T>;
 }
 
-const props = defineProps<DataTableViewOptionsProps>()
+const props = defineProps<DataTableViewOptionsProps>();
 
 const columns = computed(() => props.table.getAllColumns()
   .filter(
     column =>
-      typeof column.accessorFn !== 'undefined' && column.getCanHide(),
-  ))
+      typeof column.accessorFn !== "undefined" && column.getCanHide(),
+  ));
 </script>
 
 <template>

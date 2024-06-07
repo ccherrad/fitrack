@@ -1,24 +1,24 @@
 <script setup lang="ts">
-import { type HTMLAttributes, computed } from 'vue'
-import { Search } from 'lucide-vue-next'
-import { ComboboxInput, type ComboboxInputProps, useForwardProps } from 'radix-vue'
-import { cn } from '@/lib/utils'
+import { type HTMLAttributes, computed } from "vue";
+import { Search } from "lucide-vue-next";
+import { ComboboxInput, type ComboboxInputProps, useForwardProps } from "radix-vue";
+import { cn } from "@/lib/utils";
 
 defineOptions({
   inheritAttrs: false,
-})
+});
 
 const props = defineProps<ComboboxInputProps & {
-  class?: HTMLAttributes['class']
-}>()
+  class?: HTMLAttributes["class"];
+}>();
 
 const delegatedProps = computed(() => {
-  const { class: _, ...delegated } = props
+  const { class: _, ...delegated } = props;
 
-  return delegated
-})
+  return delegated;
+});
 
-const forwardedProps = useForwardProps(delegatedProps)
+const forwardedProps = useForwardProps(delegatedProps);
 </script>
 
 <template>

@@ -1,19 +1,19 @@
 <script setup lang="ts">
-import type { Table } from '@tanstack/vue-table'
-import { computed, ref} from 'vue'
-import { PlusIcon } from '@radix-icons/vue'
+import type { Table } from "@tanstack/vue-table";
+import { computed, ref} from "vue";
+import { PlusIcon } from "@radix-icons/vue";
 
 interface DataTableCreateRowProps {
-  create: Object
+  create: Object;
 }
 
-const props = defineProps<DataTableCreateRowProps>()
-const open = ref(false)
-const emit = defineEmits(['submitted']);
+const props = defineProps<DataTableCreateRowProps>();
+const open = ref(false);
+const emit = defineEmits(["submitted"]);
 
 const handleSubmitted = () => {
   open.value = false;
-  emit('submitted');
+  emit("submitted");
 };
 </script>
 
