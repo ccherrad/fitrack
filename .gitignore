@@ -183,3 +183,4 @@ src/js/*.sln
 # Typescript
 src/js/*.tsbuildinfo
 
+node_modules
