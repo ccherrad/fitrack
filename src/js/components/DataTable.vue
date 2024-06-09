@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="ts" generic="T extends BaseModel">
 import type {
   ColumnDef,
   ColumnFiltersState,
@@ -20,26 +20,27 @@ import { ref } from "vue";
 import DataTableToolbar from "./DataTableToolbar.vue";
 import { valueUpdater } from "@/lib/utils";
 
+
+export type BaseModel = {
+  id: string;
+};
+
 interface DataTableProps {
-  columns: ColumnDef<T, any>[];
+  columns: ColumnDef<T>[];
   data: T[];
-  create: Object;
-  service: Object;
+  create: any;
+  service: any;
 }
 const props = defineProps<DataTableProps>();
 
 const emit = defineEmits(["newAdded", "athleteDeleted"]);
-
-const handleCellClick = () => {
-  console.log("cell clicked");
-};
 
 const sorting = ref<SortingState>([]);
 const columnFilters = ref<ColumnFiltersState>([]);
 const columnVisibility = ref<VisibilityState>({});
 const rowSelection = ref({});
 
-const table = useVueTable({
+const table = useVueTable<T>({
   get data() { return props.data; },
   get columns() { return props.columns; },
   state: {

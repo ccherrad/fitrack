@@ -3,10 +3,9 @@ import * as z from "zod";
 import { parseDate } from "@internationalized/date";
 import { useForm } from "vee-validate";
 import { toTypedSchema } from "@vee-validate/zod";
-import { h, ref } from "vue";
+import { ref } from "vue";
 import { Button } from "@/components/ui/button";
-import { toast } from "@/components/ui/toast";
-import { AutoForm, AutoFormField } from "@/components/ui/auto-form";
+import { AutoForm } from "@/components/ui/auto-form";
 import athleteService from "~/services/athlete";
 
 
@@ -36,12 +35,6 @@ const schema = z.object({
     })
     .optional(),
 });
-
-interface updateForm {
-  fullname: string;
-  birthday: date;
-  bio: string;
-}
 
 const form = useForm({
   validationSchema: toTypedSchema(schema),

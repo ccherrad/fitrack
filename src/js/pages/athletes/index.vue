@@ -3,8 +3,9 @@ import { ref, onMounted } from "vue";
 import { columns } from "@/components/columns";
 import athleteService from "~/services/athlete";
 import Create from "./[id].vue";
+import type { Athlete } from "~/data/schema";
 
-const athletes = ref([]);
+const athletes = ref<Athlete[]>([]);
 
 const fetchAthletes = async () => {
   try {

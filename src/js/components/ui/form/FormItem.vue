@@ -1,14 +1,10 @@
-<script lang="ts">
-import type { HTMLAttributes, InjectionKey } from "vue";
-</script>
+<script setup lang="ts">
 
-<script lang="ts" setup>
 import { provide } from "vue";
 import { useId } from "radix-vue";
 import { cn } from "@/lib/utils";
-
-export const FORM_ITEM_INJECTION_KEY
-  = Symbol() as InjectionKey<string>;
+import type { HTMLAttributes } from "vue";
+import { FORM_ITEM_INJECTION_KEY } from "./useFormField";
 
 const props = defineProps<{
   class?: HTMLAttributes["class"];
@@ -16,6 +12,7 @@ const props = defineProps<{
 
 const id = useId();
 provide(FORM_ITEM_INJECTION_KEY, id);
+
 </script>
 
 <template>

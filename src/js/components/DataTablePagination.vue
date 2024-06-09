@@ -1,4 +1,5 @@
-<script setup lang="ts">
+<script setup lang="ts" generic="T extends BaseModel">
+
 import { type Table } from "@tanstack/vue-table";
 import {
     ChevronLeftIcon,
@@ -6,12 +7,14 @@ import {
     DoubleArrowLeftIcon,
     DoubleArrowRightIcon,
 } from "@radix-icons/vue";
+import { type BaseModel } from "./DataTable.vue";
 
 
 interface DataTablePaginationProps {
   table: Table<T>;
 }
 defineProps<DataTablePaginationProps>();
+
 </script>
 
 <template>

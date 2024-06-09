@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import type { Table } from "@tanstack/vue-table";
-import { computed, ref} from "vue";
+
+import { ref } from "vue";
 import { PlusIcon } from "@radix-icons/vue";
 
 interface DataTableCreateRowProps {
-  create: Object;
+  create: any;
 }
 
 const props = defineProps<DataTableCreateRowProps>();
@@ -33,7 +33,7 @@ const handleSubmitted = () => {
       <DialogHeader>
         <DialogTitle>Add athlete</DialogTitle>
       </DialogHeader>
-      <component :is="create" @submitted="handleSubmitted"/>
+      <component :is="props.create" @submitted="handleSubmitted"/>
     </DialogContent>
   </Dialog>
 </template>

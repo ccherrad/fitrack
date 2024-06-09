@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="ts" generic="T extends BaseModel">
 import type { Column } from "@tanstack/vue-table";
 import {
     ArrowDownIcon,
@@ -8,9 +8,10 @@ import {
 } from "@radix-icons/vue";
 
 import { cn } from "@/lib/utils";
+import type { BaseModel } from "./DataTable.vue";
 
 interface DataTableColumnHeaderProps {
-  column: Column<T, any>;
+  column: Column<T>;
   title: string;
 }
 

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="ts" generic="T extends BaseModel">
 import type { Column } from "@tanstack/vue-table";
 import type { Component } from "vue";
 import { computed } from "vue";
@@ -8,9 +8,10 @@ import {
 } from "@radix-icons/vue";
 
 import { cn } from "@/lib/utils";
+import type { BaseModel } from "./DataTable.vue";
 
 interface DataTableFacetedFilter {
-  column?: Column<T, any>;
+  column?: Column<T>;
   title?: string;
   options: {
     label: string;

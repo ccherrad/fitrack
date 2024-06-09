@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="ts" generic="T extends BaseModel">
 import { type Table } from "@tanstack/vue-table";
 import { computed } from "vue";
 
@@ -6,10 +6,11 @@ import { priorities, statuses } from "@/data/data";
 import DataTableFacetedFilter from "./DataTableFacetedFilter.vue";
 import DataTableViewOptions from "./DataTableViewOptions.vue";
 import { Cross2Icon } from "@radix-icons/vue";
+import type { BaseModel } from "./DataTable.vue";
 
 interface DataTableToolbarProps {
   table: Table<T>;
-  create: Object;
+  create: any;
 }
 
 const props = defineProps<DataTableToolbarProps>();

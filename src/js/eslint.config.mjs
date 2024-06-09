@@ -20,6 +20,7 @@ export default withNuxt({
           "requireLast": false,
         },
       },
-  ],
+    ],
+    "@typescript-eslint/no-explicit-any": "off",
   },
 });

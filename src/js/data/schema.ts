@@ -6,6 +6,7 @@ export const athleteSchema = z.object({
   id: z.string(),
   fullname: z.string(),
   dob: z.string(),
+  label: z.string(),
 });
 
 export type Athlete = z.infer<typeof athleteSchema>

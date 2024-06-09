@@ -1,7 +1,8 @@
-<script setup lang="ts" generic="T extends {id: number}">
+<script setup lang="ts" generic="T extends BaseModel">
 import type { Row } from "@tanstack/vue-table";
 import { DotsHorizontalIcon } from "@radix-icons/vue";
 import AthleteService from "@/services/athlete";
+import type { BaseModel } from "./DataTable.vue";
 
 interface DataTableRowActionsProps<T> {
   row: Row<T>;
