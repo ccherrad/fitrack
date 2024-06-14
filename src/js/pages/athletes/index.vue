@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-import { columns } from "@/components/columns";
 import athleteService from "~/services/athlete";
 import Create from "./[id].vue";
-import type { Athlete } from "~/data/schema";
+import type { Athlete } from "~/schemas/athlete";
+import { athleteTableColumns} from "~/schemas/athlete";
 
 const athletes = ref<Athlete[]>([]);
 
@@ -23,7 +23,7 @@ onMounted(fetchAthletes);
   <div class="hidden flex-1 flex-col space-y-8 p-8 md:flex">
     <DataTable
       :data="athletes"
-      :columns="columns"
+      :columns="athleteTableColumns"
       :create="Create"
       :service="athleteService"
       @new-added="fetchAthletes"
