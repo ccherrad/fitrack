@@ -1,5 +1,5 @@
 # Dockerfile for Nuxt.js Application
-FROM node:18
+FROM node:20
 
 # Set the working directory
 WORKDIR /app
