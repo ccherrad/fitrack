@@ -5,15 +5,15 @@ from fastapi import APIRouter, Depends, HTTPException, Query, Response, status
 from sqlalchemy.orm import Session
 
 
-from core.database import get_session
-from crud.athletes import (
+from database import get_session
+from athletes.services import (
     save_athlete,
     get_athletes,
     get_athlete_by_id,
     update_athlete_by_id,
     delete_athlete_by_id,
 )
-from schemas.athletes import AthleteIn, AthleteOut, AthleteUpdate
+from athletes.schemas import AthleteIn, AthleteOut, AthleteUpdate
 
 
 router = APIRouter(
@@ -32,10 +32,10 @@ def create_athlete(
 ):
     athlete = save_athlete(
                 session,
-                athlete_in.fullname,
+                athlete_in.first_name,
+                athlete_in.last_name,
                 athlete_in.dob,
                 athlete_in.bio,
-                athlete_in.group_id,
             )
     return athlete
 
@@ -89,4 +89,4 @@ def delete_athlete(
     id: int,
     session: Session = Depends(get_session),
 ):
-    return delete_athlete_by_id(session, id)
+    r

@@ -6,7 +6,7 @@ from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.ext.declarative import as_declarative, declared_attr
 from sqlalchemy.orm import Session, sessionmaker
 
-from .config import settings
+from config import settings
 
 NAME = settings.SQL_DB
 HOST = settings.SQL_HOST

@@ -3,23 +3,23 @@ from datetime import date
 from typing import Optional
 
 class AthleteIn(BaseModel):
-    fullname: str
+    first_name: str
+    last_name: str
     dob: date
     bio: Optional[str] = None
-    group_id: Optional[int] = None
 
 class AthleteUpdate(BaseModel):
-    fullname: Optional[str] = None
+    first_name: Optional[str] = None
+    last_name: Optional[str] = None
     dob: Optional[date] = None
     bio: Optional[str] = None
-    group_id: Optional[int] = None
 
 class AthleteOut(BaseModel):
     id: int
-    fullname: str
+    first_name: str
+    last_name: str
     dob: date
     bio: Optional[str] = None
-    group_id: Optional[int] = None
 
     class Config:
         from_attributes = True

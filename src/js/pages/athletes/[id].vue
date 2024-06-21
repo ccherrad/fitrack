@@ -7,6 +7,7 @@ import { ref } from "vue";
 import { Button } from "@/components/ui/button";
 import { AutoForm } from "@/components/ui/auto-form";
 import athleteService from "~/services/athlete";
+import { athleteSchema } from "~/schemas/athlete";
 
 
 const emit = defineEmits(["submitted"]);
@@ -14,30 +15,8 @@ const emit = defineEmits(["submitted"]);
 const isEditMode = ref(false);
 const athleteId = ref();
 
-const schema = z.object({
-  fullname: z
-    .string({
-      required_error: "Fullname is required.",
-    })
-    .min(2, {
-      message: "Username must be at least 2 characters.",
-    }),
-
-  birthday: z.coerce.date().optional(),
-
-  bio: z
-    .string()
-    .min(10, {
-      message: "Bio must be at least 10 characters.",
-    })
-    .max(160, {
-      message: "Bio must not be longer than 30 characters.",
-    })
-    .optional(),
-});
-
-const form = useForm({
-  validationSchema: toTypedSchema(schema),
+const athleteForm = useForm({
+  validationSchema: toTypedSchema(athleteSchema),
 });
 
 onMounted(async () => {
@@ -47,9 +26,10 @@ onMounted(async () => {
     isEditMode.value = true;
     athleteId.value = Number(id);
     const athlete = await athleteService.get(Number(id));
-    form.setFieldValue("fullname", athlete.fullname);
-    form.setFieldValue("birthday", parseDate(athlete.dob));
-    form.setFieldValue("bio", athlete.bio);
+    athleteForm.setFieldValue("first_name", athlete.first_name);
+    athleteForm.setFieldValue("last_name", athlete.last_name);
+    athleteForm.setFieldValue("birthday", parseDate(athlete.dob));
+    athleteForm.setFieldValue("bio", athlete.bio);
   } else {
     isEditMode.value = false;
   }
@@ -75,8 +55,8 @@ async function onSubmit(values: Record<string, any>) {
 <template>
   <AutoForm
     class="w-2/3 space-y-6"
-    :schema="schema"
-    :form="form"
+    :schema="athleteSchema"
+    :form="athleteForm"
     :field-config="{
       birthday: {
         label: 'Date of birth',

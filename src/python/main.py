@@ -3,7 +3,7 @@ import json
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from api import router as api_router
+from router import router
 
 app = FastAPI(
     title="fitrack",
@@ -18,7 +18,7 @@ app.add_middleware(
     expose_headers=["X-Total-Count"],
 )
 
-app.include_router(api_router)
+app.include_router(router)
 
 @app.get("/health")
 def health_check():

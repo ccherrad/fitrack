@@ -1,15 +1,15 @@
-from models.athletes import Athlete
-from core.database import get_session
+from athletes.models import Athlete
+from database import get_session
 
 
 def save_athlete(
     session,
-    fullname,
+    first_name,
+    last_name,
     dob,
     bio=None,
-    group_id=None,
 ):
-    athlete = Athlete(fullname=fullname, dob=dob, bio=bio, group_id=group_id)
+    athlete = Athlete(first_name=first_name, last_name=last_name, dob=dob, bio=bio)
     session.add(athlete)
     session.commit()
     return athlete
