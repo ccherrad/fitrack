@@ -89,4 +89,4 @@ def delete_athlete(
     id: int,
     session: Session = Depends(get_session),
 ):
-    r
+    return delete_athlete_by_id(session, id)
